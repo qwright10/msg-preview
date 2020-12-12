@@ -11,6 +11,7 @@ if (!process.env.DISCORD_TOKEN || !process.env.PG) {
 const client = new Client({
 	messageCacheMaxSize: 10_000,
 	presence: { activity: { name: 'for messages', type: 'WATCHING' } },
+	partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
 	ws: {
 		intents: ['GUILD_MESSAGES', 'DIRECT_MESSAGES'],
 	},
