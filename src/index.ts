@@ -13,17 +13,19 @@ const client = new Client({
 	presence: { activity: { name: 'for messages', type: 'WATCHING' } },
 	partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
 	ws: {
-		intents: ['GUILD_MESSAGES', 'DIRECT_MESSAGES'],
+		intents: ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES'],
 	},
 });
 
 const regex = /https:\/\/(?:canary\.)?discord\.com\/channels\/(\d{17,19})\/(\d{17,19})\/(\d{17,19})/;
 
 client.on('message', (message) => {
+	console.log('Received message:', message.content);
 	void (async () => {
 		if (!message.guild) return message.reply('This bot only responds to messages in guilds.');
 
 		const result = regex.exec(message.content);
+		console.log(result);
 		if (!result) return;
 		const [, guildID, channelID, messageID] = result;
 
@@ -85,6 +87,7 @@ void (async () => {
 	}).catch((err) => {
 		console.error('Failed to connect to pg:', err);
 	});
+	console.log('Connected to PostgreSQL database');
 
 	await client.login();
 	console.log('Logged in as:', client.user?.tag ?? 'Unknown#0000');
