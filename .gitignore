@@ -1,0 +1,5 @@
+node_modules
+build/
+.env
+dl.sh
+.DS_Store

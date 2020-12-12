@@ -1,0 +1,30 @@
+{
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"extends": "marine/prettier/node",
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2019,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"rules": {
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-extraneous-class": ["off"],
+		"@typescript-eslint/no-unused-vars": ["error"],
+		"@typescript-eslint/naming-convention": ["off"],
+		"@typescript-eslint/restrict-template-expressions": ["off"],
+		"comma-dangle": [
+			"error",
+			"always-multiline"
+		]
+	}
+}
