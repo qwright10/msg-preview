@@ -1,6 +1,7 @@
 import { Client, MessageEmbed, MessageReaction, TextChannel, User } from 'discord.js';
 import { createConnection, getRepository } from 'typeorm';
 import Settings from './Settings';
+import 'dotenv/config';
 
 if (!process.env.DISCORD_TOKEN || !process.env.PG) {
 	console.error('Missing environment variables, did you use -r dotenv/config?');
